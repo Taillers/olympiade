@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
 
@@ -76,22 +79,8 @@ function synchro_lst()
 </script>
 	</head>
 	<body>
-		<div class="header">
-			<center><h1>Olympiade 2017</h1></center>
-		</div>
-
-		<div class="menu">
-			<ul>
-				<center>
-				<a href="index_connexion.php">Connexion</a> &nbsp &nbsp
-				<a href="inscription_choix.php">Inscription</a> &nbsp &nbsp
-				<a href="#">Informations et contact</a> &nbsp &nbsp
-				<a href="reglements.php">Règlement et mentions légales</a>
-				</center>
-			</ul>
-		</div>
-
 		<?php
+			include('inclusion/menu.htm');
 	// include('./inclusion/connect.inc');
 	// $idc = connectToDb();
 	// $sql='insert into participant(nom_participant, prenom_participant, fumeur, sports_pratiques, date_naissance, affiliation_club )
