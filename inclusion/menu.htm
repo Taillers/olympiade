@@ -1,0 +1,30 @@
+<div class="header">
+    <center><h1>Olympiade 2017</h1></center>
+</div>
+
+<div class="menu">
+    <ul>
+        <center>
+        <?php
+            if(isset($_SESSION['Connected']) &&  $_SESSION['Connected'] == true)
+            {
+                print '<a href="liste_equipe">Gestion organisation des équipes</a> &nbsp &nbsp';
+                print '<a href="gestion_points">Gestion des points(consulter/modifier)</a> &nbsp &nbsp';
+            }
+            else
+            {
+                print '<a href="index_connexion.php">Connexion</a> &nbsp &nbsp';		
+            }
+        ?>
+        <a href="creer_equipe.php">Inscription</a> &nbsp &nbsp
+        <a href="#">Informations et contact</a> &nbsp &nbsp
+        <a href="reglements.php">Règlement et mentions légales</a>
+        <?php
+            if(isset($_SESSION['Connected']) &&  $_SESSION['Connected'] == true)
+            {
+                print '<a href="deconnexion">Déconnexion</a> &nbsp &nbsp';
+            }
+        ?>
+        </center>
+    </ul>
+</div>
