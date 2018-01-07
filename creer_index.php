@@ -28,19 +28,20 @@
 			</ul>
 		</div>
 <?php
-print_r($_POST);
+
 
     include('./inclusion/connect.inc');
 	$idc = connectToDb();
-	//Insertion du capitaine dans la table des participants
-	$sql='insert into participant(nom_participant, prenom_participant, fumeur, sports_pratiques, date_naissance, affiliation_club )
-	values (\''.$_POST['nom'].'\',\''.$_POST['prenom'].'\',\''.$_POST['fumet'].'\',\''.$_POST['sport'].'\',\''.$_POST['age'].'\',\''.$_POST['club'].'\') returning num_participant';
+	//Insertion du capitaine dans la table des participants+ Rajouter num_étalissement (nom eta)
+	$sql='insert into participant(nom_participant, prenom_participant, fumeur, sports_pratiques, date_naissance, affiliation_club, num_etablissement, num_formation, num_civilite )
+	values (\''.$_POST['nom'].'\',\''.$_POST['prenom'].'\',\''.$_POST['fumet'].'\',\''.$_POST['sport'].'\',\''.$_POST['age'].'\',\''.$_POST['club'].'\','.$_POST['etablissement'].','.$_POST['formation'].','.$_POST['civilite'].') returning num_participant';
 	$id_participant = pg_query($idc,$sql);
 	$id = pg_fetch_array($id_participant);
 	$NumCapitaine = $id[0];
 
 	//Calcul du nombre de filles
 	$NbFille = 0;
+    if($_POST['civilite'] == 2) $NbFille++;
     if($_POST['sexeone'] == 2) $NbFille++;
     if($_POST['sexetwo'] == 2) $NbFille++;
     if($_POST['sexethre'] == 2) $NbFille++;
@@ -50,9 +51,20 @@ print_r($_POST);
 	//Calcul de l'age moyen
 	$now = new DateTime("now");
 	$dateNaissance = DateTime::createFromFormat('Y-m-j',$_POST['age']);
-    $ageCapitaine = $now->diff($dateNaissance);
-    $Age_moyen = intval($_POST['age1']) + intval($_POST['age2']) + intval($_POST['age3']) + intval($_POST['age4']) + intval($_POST['age5'] + $ageCapitaine->y);
-    $Age_moyen = $Age_moyen/6;
+	$ageCapitaine = $now->diff($dateNaissance);
+	$dateNaissance1 = DateTime::createFromFormat('Y-m-j',$_POST['age1']);
+	$age1 = $now->diff($dateNaissance1);
+	$dateNaissance2 = DateTime::createFromFormat('Y-m-j',$_POST['age2']);
+	$age2 = $now->diff($dateNaissance2);
+	$dateNaissance3 = DateTime::createFromFormat('Y-m-j',$_POST['age3']);
+	$age3 = $now->diff($dateNaissance3);
+	$dateNaissance4 = DateTime::createFromFormat('Y-m-j',$_POST['age4']);
+	$age4 = $now->diff($dateNaissance4);
+	$dateNaissance5 = DateTime::createFromFormat('Y-m-j',$_POST['age5']);
+	$age5 = $now->diff($dateNaissance5);
+
+    $Age_moyen = ($age1->y + $age2->y + $age3->y + $age4->y + $age5->y + $ageCapitaine->y)/6;
+
 
 	$Bonus = 10 * $NbFille;
 	//Création de l'équipe
@@ -62,11 +74,11 @@ print_r($_POST);
     $num_equipe = $id[0];
 
 	//Inserer les membres de l'équipe dans la table des participants
-	InsertParticipant($idc,$_POST['nomone'],$_POST['firstnameone'], $_POST['age1'], $_POST['sexeone'], $num_equipe );
-	InsertParticipant($idc,$_POST['nomtwo'],$_POST['firstnametwo'], $_POST['age2'], $_POST['sexetwo'], $num_equipe );
-	InsertParticipant($idc,$_POST['nomthree'],$_POST['firstnamethree'], $_POST['age3'], $_POST['sexethre'], $num_equipe );
-	InsertParticipant($idc,$_POST['nomfor'],$_POST['firstnamefor'], $_POST['age4'], $_POST['sexefor'],$num_equipe );
-	InsertParticipant($idc,$_POST['nomfiv'],$_POST['firstnamefiv'], $_POST['age5'], $_POST['sexefiv'], $num_equipe );
+	InsertParticipant($idc,$_POST['nomone'],$_POST['firstnameone'], $_POST['age1'], $_POST['sexeone'], $num_equipe, $_POST['etablissement'] );
+	InsertParticipant($idc,$_POST['nomtwo'],$_POST['firstnametwo'], $_POST['age2'], $_POST['sexetwo'], $num_equipe, $_POST['etablissement']  );
+	InsertParticipant($idc,$_POST['nomthree'],$_POST['firstnamethree'], $_POST['age3'], $_POST['sexethre'], $num_equipe, $_POST['etablissement']  );
+	InsertParticipant($idc,$_POST['nomfor'],$_POST['firstnamefor'], $_POST['age4'], $_POST['sexefor'],$num_equipe, $_POST['etablissement']  );
+	InsertParticipant($idc,$_POST['nomfiv'],$_POST['firstnamefiv'], $_POST['age5'], $_POST['sexefiv'], $num_equipe,$_POST['etablissement']  );
 	
 
 	//Mettre à jour le numéro de l équipe pour la capitaine

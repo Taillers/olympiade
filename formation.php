@@ -19,9 +19,9 @@ session_start();
         ?>
         <center>
         <table>
-            <td>
+            <tr>
                 <th>Nom de la formation</th><th>Action</th>
-            </td>
+            </tr>
             <?php
                 include('inclusion/connect.inc');
                 $idc = connectToDb();
@@ -40,9 +40,28 @@ session_start();
 
             ?>
         </table>
-        <form method="POST" action="ajouter_etablissement.php">
+        
+        <table>
+            <tr>
+                <th>Nom de l'établissement</th><th>Action</th>
+            </tr>
+            <?php
+        
+                $sql = 'select num_etablissement, nom_etablissement, adr_etablissemnt from etablissement order by nom_etablissement';
+                $rs = pg_exec($idc, $sql);
+                while ($ligne = pg_fetch_assoc($rs))
+                {
+                    print '<form method="POST" action="deleteetablissement">';
+                    print('<tr><td><input type="text" name="etablissement" value="'.$ligne['nom_etablissement'].'" readonly ><input type="hidden" name="idx" value='.$ligne['num_etablissement'].'> </td><td><input  id="submit" type="submit" name="Suppression" value="Suppression"/></td>');
+                    print '</form>';
+                }
+                print '<form method="POST" action="addetablissement">';
+                print('<tr><td><input type="text" name="etablissement"></td><td><input  id="submit" type="submit" name="Ajout" value="Ajout"/></td>');
+                print '</form>';
+            
 
-        </form>
+            ?>
+        </table>
         </center>
 	</body>
 </html>

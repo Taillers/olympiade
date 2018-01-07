@@ -5,10 +5,10 @@ function connectToDb ()
 	 return($idc);
 }
 
-function InsertParticipant($idc, $nom, $prenom, $age, $sexe, $Equipe)
+function InsertParticipant($idc, $nom, $prenom, $age, $sexe, $Equipe, $etablissement)
 {
-	$sql = 'insert into participant(nom_participant, prenom_participant, date_naissance, num_civilite, num_equipe  )
-	values (\''.$nom.'\',\''.$prenom.'\',\''.$age.'\','.$sexe.','.$Equipe.')' ;
+	$sql = 'insert into participant(nom_participant, prenom_participant, date_naissance, num_civilite, num_equipe, num_etablissement  )
+	values (\''.$nom.'\',\''.$prenom.'\',\''.$age.'\','.$sexe.','.$Equipe.','.$etablissement.')' ;
 	pg_query($idc,$sql);	
 }
 ?>

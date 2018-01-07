@@ -17,7 +17,7 @@
 		<div class="menu">
 			<ul>
 				<center>
-				<a href="inscription.php">Intégrer une équipe</a> &nbsp &nbsp
+				
 				<a href="creer_equipe.php">Créer une équipe</a> &nbsp &nbsp
 				
 				</center>

@@ -47,6 +47,9 @@ if (!isset($_SESSION['Connected']) || $_SESSION['Connected'] == false) {
 	</table>
 	<input type="submit" value="Valider"></input>
 </form>
+<form method='POST' action='mix_equipe.php'>
+	<input type="submit" value="Mixer présent"></input>
+</form>
 
 </center>
 

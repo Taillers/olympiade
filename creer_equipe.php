@@ -85,7 +85,7 @@
 			
 			
 			<tr><td align="right">
-			<label>Etablissement<select name="etabl"></label>
+			<label>Etablissement<select name="etablissement"></label>
 			<?php
 		include('./inclusion/connect.inc');
 		$idc = connectToDb();
@@ -98,7 +98,7 @@
 		</td></tr>
 		
 		<tr><td align="right">
-			<label>Formation<select name="forme"></label>
+			<label>Formation<select name="formation"></label>
 			<?php
 		$sql = 'select num_formation, nom_formation from formation order by nom_formation ';
 		$rs = pg_exec($idc, $sql);
@@ -109,7 +109,7 @@
 		</td></tr>
 		
 			<tr><td align="right">
-			<label>Civilité<select name="civilité"></label>
+			<label>Civilité<select name="civilite"></label>
 			<?php
 		$sql = 'select num_civilite, nom_civilite from civilite order by nom_civilite ';
 		$rs = pg_exec($idc, $sql);
@@ -125,7 +125,7 @@
 		$rs = pg_exec($idc, $sql);
 		while ($ligne = pg_fetch_assoc($rs)) {
 			if ($ligne['principal'] == "t") {
-				print('<option value="' . $ligne['num_activite'] . '" >' . $ligne['nom_activite'] . '</option>' . "\n");
+				print('<option name = "principal" value="' . $ligne['num_activite'] . '" >' . $ligne['nom_activite'] . '</option>' . "\n");
 			}
 		}
 		?>

@@ -110,8 +110,12 @@ function synchro_lst()
 	$fumet = empty($_POST['fumet'])?"Inconnu":$_POST['fumet'];
 	$club = empty($_POST['club'])?"Inconnu":$_POST['club'];
 	$sport = empty($_POST['sport'])?"Inconnu":$_POST['sport'];
-	$age = empty($_POST['age'])?"Inconnu":$_POST['age'];
+	$age = empty($_POST['age'])?"1970-01-01":$_POST['age'];
+	$formation = empty($_POST['formation'])?"Inconnu":$_POST['formation'];
+	$etablissement = empty($_POST['etablissement'])?"Inconnu":$_POST['etablissement'];
+	$civilite = empty($_POST['civilite'])?"Inconnu":$_POST['civilite'];
 
+	
 	print '<input id="nom" name="nom" value='.$nom.' type="hidden"/>';
 	print '<input id="prenom" name="prenom" value='.$prenom.' type="hidden"/>';
 	print '<input id="num" name="num" value='.$num.' type="hidden"/>';
@@ -121,6 +125,10 @@ function synchro_lst()
 	print '<input id="club" name="club" value='.$club.' type="hidden"/>';
 	print '<input id="sport" name="sport" value='.$sport.' type="hidden"/>';
 	print '<input id="age" name="age" value='.$age.' type="hidden"/>';
+	print '<input id="formation" name="formation" value='.$formation.' type="hidden"/>';
+	print '<input id="etablissement" name="etablissement" value='.$etablissement.' type="hidden"/>';
+	print '<input id="civilite" name="civilite" value='.$civilite.' type="hidden"/>';
+
 ?>
 			<table>
 				<center>
