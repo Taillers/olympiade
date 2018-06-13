@@ -67,8 +67,14 @@
 
 
 	$Bonus = 10 * $NbFille;
+
 	//Création de l'équipe
-    $sql='insert into equipe(nom_equipe, bonus_initial, age_moyen )  values (\''.$_POST['equipe'].'\','.$Bonus.','.$Age_moyen.') returning num_equipe';
+
+	// on va chercher le num olympiade
+	$numolympe = GetCurrentOlymp($idc);
+	
+	
+    $sql='insert into equipe(nom_equipe, bonus_initial, age_moyen, num_olympiade)  values (\''.$_POST['equipe'].'\','.$Bonus.','.$Age_moyen.','.$numolympe.') returning num_equipe';
     $id_equipe = pg_query($idc,$sql);
     $id = pg_fetch_array($id_equipe);
     $num_equipe = $id[0];

@@ -11,4 +11,16 @@ function InsertParticipant($idc, $nom, $prenom, $age, $sexe, $Equipe, $etablisse
 	values (\''.$nom.'\',\''.$prenom.'\',\''.$age.'\','.$sexe.','.$Equipe.','.$etablissement.')' ;
 	pg_query($idc,$sql);	
 }
+
+function GetCurrentOlymp($idc)
+{
+	$numolympe = 0;
+	$sql= 'select num_olympiade from olympiade order by date_olympiade desc limit 1';
+	$rs = pg_exec($idc, $sql);
+    if($ligne = pg_fetch_assoc($rs)){
+		$numolympe = $ligne['num_olympiade'];
+	}
+	return ($numolympe);
+}
+
 ?>
