@@ -1,4 +1,5 @@
 <?php
+// l'inscription du capitaine
    		session_start();
 		$oneError = "";
 		
@@ -16,3 +17,4 @@
 		include("gerer_equipe.php");
 	}
 ?>
+

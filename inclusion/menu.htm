@@ -9,7 +9,6 @@
             if(isset($_SESSION['Connected']) &&  $_SESSION['Connected'] == true)
             {
                 print '<a href="liste_equipe">Gestion organisation des équipes</a> &nbsp &nbsp';
-                print '<a href="gestion_points">Gestion des points</a> &nbsp &nbsp';
                 print '<a href="formation">Enregistrer une formation/établissement</a> &nbsp &nbsp';
                 print '<a href="Gestion_olympiade">Gérer terrain, météo et création de nouvelle olympiade</a> &nbsp &nbsp';
             }
@@ -19,7 +18,6 @@
             }
         ?>
         <a href="creer_equipe.php">Inscrire une équipe</a> &nbsp &nbsp
-        <a href="#">Informations et contact</a> &nbsp &nbsp
         <a href="reglements.php">Règlement et mentions légales</a>
         <?php
             if(isset($_SESSION['Connected']) &&  $_SESSION['Connected'] == true)

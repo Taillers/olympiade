@@ -5,13 +5,14 @@ function connectToDb ()
 	 return($idc);
 }
 
+// la fonction pour add un participant dans la base de données
 function InsertParticipant($idc, $nom, $prenom, $age, $sexe, $Equipe, $etablissement)
 {
 	$sql = 'insert into participant(nom_participant, prenom_participant, date_naissance, num_civilite, num_equipe, num_etablissement  )
 	values (\''.$nom.'\',\''.$prenom.'\',\''.$age.'\','.$sexe.','.$Equipe.','.$etablissement.')' ;
 	pg_query($idc,$sql);	
 }
-
+// fonction pour savoir quelle olympiade est celle "en cours" et la distinguer de celles qui sont passées. 
 function GetCurrentOlymp($idc)
 {
 	$numolympe = 0;

@@ -74,17 +74,21 @@ if (!isset($_SESSION['Connected']) || $_SESSION['Connected'] == false) {
 	</body>
 </html>
 
-
-<script type="text/javascript">
-	$(document).ready(function () {
+ 
+<script type="text/javascript"> 
+//  Rafraichir les équipes affichées en fonction de l'olympiade selectionnée
+//  On utilise du jquerry pour vérifier le changement de sélection de la listbox avec l'identifiant list_olympe
+// On récupère l'identifiant de l'olympiade et on utilise ajax pour récupérer les informations sur le serveur des équipes inscrites pour cette olympiade
+// La fonction function(data)  est le retour de l'appel GetListEquip.php et permet de mettre à jour le contenu de la div identifié par listequip et donc d'afficher les informations 
+	$(document).ready(function () { // on attend que le navigateur client remplisse les info
 		$("#liste_olympe").change(function(){
 			$.post(
-				'GetListEquip.php',
+				'GetListEquip.php', // on transmet au serveur
 				{
-					CurrentOlympiadeId : $("select option:selected").val()
+					CurrentOlympiadeId : $("select option:selected").val() // qui va renvoyer les données uniquement de l'olympiade selectionnée
 				}, 
 				function(data){
-					$("#listEquip").html(data);
+					$("#listEquip").html(data); // en donnant les valeurs à listEquip
 				},
 				'text'
 			);

@@ -1,7 +1,9 @@
 <?php
     if(isset($_POST['CurrentOlympiadeId']))
     {
+// Partie du code qui sert à gérer l'affichage des équipes et participants en fonction de l'olympiade selectionnée, en empêchant la modification si ce n'est pas l'olympiade la plus récente
 //        print('<H1>Juste pour un essai avec le code ' .$_POST['CurrentOlympiadeId'] . '</h1>');
+// les prints ne sont probablement pas le meilleur moyen mais c'est celui qui fonctionne...
 		print('<form name="frm" action="index_liste.php" method="POST">');
 		print('<table border="6">');
 		print('<tr ><td>Nom équipe</td><td>Participants</td><td>Présence</td></tr>');

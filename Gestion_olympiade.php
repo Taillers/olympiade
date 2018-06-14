@@ -25,6 +25,8 @@ session_start();
     include('inclusion/connect.inc');
     $today= new DateTime("now");
 
+    // permet de renseigner les informations de l'olympiade dans la base de données
+    // ainsi que d'afficher celle ci dans un tableau
     $cancreate = true;
     $idc = connectToDb();
     $sql = 'select num_olympiade,date_olympiade,lieu,meteo from olympiade

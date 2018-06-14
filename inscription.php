@@ -61,7 +61,7 @@ function synchro_lst()
 	httpRequest.open("GET", prg+param, true);
 	httpRequest.send(null);
 }
-
+// C'est là qu'on va permettre d'inscrire les membres de l'équipe tout en renseignant leurs infos dans la base de données
 </script>
 </head>
 <body>
@@ -71,9 +71,11 @@ function synchro_lst()
 		<div class="header">
 			<h1>Olympiade 2017</h1>
 		</div>
+	
 
 		
 		<form method="POST" action="inscription_index.php">
+		
 			<table>
 				<tr><td align="right">			<label>Nom </label>
 			<input type="text" placeholder= "Entrez votre nom " name="nom" id="nom" pattern="[A-Za-z]{1,}" 
